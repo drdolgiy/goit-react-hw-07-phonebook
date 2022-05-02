@@ -10,7 +10,7 @@ import { filteredContacts } from 'redux/filterSlice';
 export default function App() {
     const dispatch = useDispatch();
     const contacts = useSelector(state => state.contacts.items);
-    console.log(contacts);
+    // console.log(contacts);
     const filter = useSelector(state => state.filter.value);
 
     const filteredContact = () => {
