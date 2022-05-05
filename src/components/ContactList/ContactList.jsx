@@ -17,22 +17,7 @@ export const ContactList = ({ items, deleteContact }) => {
     )
 };
 
-// export const ContactList = ({contacts, filteredContact, deleteContact }) => {
-//     return (
-//         <ul>
-//             {contacts.map((contact) => {
-//                 return (
-//                     <ListItem key={contact.id}>{contact.name}: {contact.number}
-//                         <DeleteButton type="button"
-//                             onClick={() => deleteContact(contact.id)}>Delete</DeleteButton>
-//                     </ListItem>
-//                 )
-//             })}
-//         </ul>
-//     )
-// };
-
-// ContactList.propTypes = {
-//     filteredContact: propTypes.array.isRequired,
-//     deleteContact: propTypes.func.isRequired
-// };
+ContactList.propTypes = {
+    filteredContact: propTypes.array.isRequired,
+    deleteContact: propTypes.func.isRequired
+};
