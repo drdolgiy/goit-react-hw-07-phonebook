@@ -7,9 +7,9 @@ export const Container = styled.div`
   justify-content: center;
 `
 
-export const Audio = styled.div`
-  height="100"
-  width="100"
-  color='grey'
-  ariaLabel='loading'
+export const Spinner = styled.div`
+  height="50";
+  width="50";
+  color='grey';
+  ariaLabel='loading';
 `

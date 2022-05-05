@@ -1,19 +1,17 @@
-import {Form} from '../Form/Form';
-import {Filter} from '../Filter/Filter';
-import {ContactList} from '../ContactList/ContactList';
-import {Container} from './App.styled'
-import { filteredContacts } from 'redux/filterSlice';
 import { useSelector,useDispatch } from 'react-redux';
 import { useFetchContactsQuery, useDeleteContactMutation } from 'redux/contactsApi';
-import { Audio } from 'react-loader-spinner';
+import { Form } from '../Form/Form';
+import {Filter} from '../Filter/Filter';
+import {ContactList} from '../ContactList/ContactList';
+import {Container, Spinner} from './App.styled'
+import { filteredContacts } from 'redux/filterSlice';
+import { Rings } from 'react-loader-spinner';
 
 export default function App() {
     const { data, isFetching } = useFetchContactsQuery();
     const [deleteContact] = useDeleteContactMutation();
-    console.log(data);
     const dispatch = useDispatch();
-    const filter = useSelector(state => state.filter.value);
-    console.log(filter);
+    const filter = useSelector(state => state.filter.value);    
 
     const filteredContact = () => {
         const normalizedFilter = filter.toLowerCase();
@@ -31,11 +29,9 @@ export default function App() {
             <h1>Phonebook</h1>        
             <Form/>
             <Filter value={filter} onChange={changeFilter} />
-            {/* <Filter /> */}
             <h2>Contacts</h2>
-            {isFetching && <Audio/>}
+            {isFetching && <Rings height="60" width="60" color='black'/>}
             {data && <ContactList filteredContact={filteredContact()} deleteContact={deleteContact}/>}
-            {/* {data && <ContactList items={data} filteredContact={filteredContact} deleteContact={deleteContact}/>} */}
         </Container>
     );    
 };
