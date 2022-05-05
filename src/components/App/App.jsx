@@ -3,7 +3,7 @@ import { useFetchContactsQuery, useDeleteContactMutation } from 'redux/contactsA
 import { Form } from '../Form/Form';
 import {Filter} from '../Filter/Filter';
 import {ContactList} from '../ContactList/ContactList';
-import {Container, Spinner} from './App.styled'
+import {Container} from './App.styled'
 import { filteredContacts } from 'redux/filterSlice';
 import { Rings } from 'react-loader-spinner';
 
