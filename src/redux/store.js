@@ -1,18 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-// import {
-//   persistReducer,
-//   persistStore,
-//   FLUSH,
-//   REHYDRATE,
-//   PAUSE,
-//   PERSIST,
-//   PURGE,
-//   REGISTER,
-// } from "redux-persist";
-// import storage from "redux-persist/lib/storage";
-import { contactsSlice } from 'redux/contactsSlice';
-import { contactsApi } from './contactsApi';
-import { filterSlice } from 'redux/filterSlice';
+import { setupListeners } from '@reduxjs/toolkit/dist/query';
+// import { contactsSlice } from 'redux/contactsSlice';
+import { contactsApi } from 'redux/contactsApi';
+// import { filterSlice } from 'redux/filterSlice';
 
 // const persistConfig = {
 //   key: 'contacts',
@@ -25,10 +15,15 @@ import { filterSlice } from 'redux/filterSlice';
 
 export const store = configureStore({
     reducer: {
-    contacts: contactsSlice.reducer,
+    // contacts: contactsSlice.reducer,
       [contactsApi.reducerPath]: contactsApi.reducer,
-    filter: filterSlice.reducer,
+    // filter: filterSlice.reducer,
+
   },
+
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(contactsApi.middleware),
+
   
   // middleware(getDefaultMiddleware) {
   //   return getDefaultMiddleware({
@@ -38,5 +33,7 @@ export const store = configureStore({
   //   } )
   // }    
 });
+
+setupListeners(store.dispatch);
 
 // export const persistor = persistStore(store);

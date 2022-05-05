@@ -1,15 +1,15 @@
 import React from "react";
 import propTypes from "prop-types";
-import { ListItem, DeleteButton } from "./ContatcList.styled";
+import { ListItem, DeleteButton } from "./ContactList.styled";
 
-export const ContactList = ({contacts, filteredContact, deleteContact }) => {
+export const ContactList = ({ items, deleteContact }) => {
     return (
         <ul>
-            {filteredContact.map((contact) => {
+            {items.map(item => {
                 return (
-                    <ListItem key={contact.id}>{contact.name}: {contact.number}
+                    <ListItem key={item.id}>{item.name}: {item.phone}
                         <DeleteButton type="button"
-                            onClick={() => deleteContact(contact.id)}>Delete</DeleteButton>
+                            onClick={() => deleteContact(item.id)}>Delete</DeleteButton>
                     </ListItem>
                 )
             })}
@@ -17,7 +17,22 @@ export const ContactList = ({contacts, filteredContact, deleteContact }) => {
     )
 };
 
-ContactList.propTypes = {
-    filteredContact: propTypes.array.isRequired,
-    deleteContact: propTypes.func.isRequired
-};
+// export const ContactList = ({contacts, filteredContact, deleteContact }) => {
+//     return (
+//         <ul>
+//             {contacts.map((contact) => {
+//                 return (
+//                     <ListItem key={contact.id}>{contact.name}: {contact.number}
+//                         <DeleteButton type="button"
+//                             onClick={() => deleteContact(contact.id)}>Delete</DeleteButton>
+//                     </ListItem>
+//                 )
+//             })}
+//         </ul>
+//     )
+// };
+
+// ContactList.propTypes = {
+//     filteredContact: propTypes.array.isRequired,
+//     deleteContact: propTypes.func.isRequired
+// };
