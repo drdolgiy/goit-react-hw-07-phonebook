@@ -2,10 +2,10 @@ import React from "react";
 import propTypes from "prop-types";
 import { ListItem, DeleteButton } from "./ContactList.styled";
 
-export const ContactList = ({ items, deleteContact }) => {
+export const ContactList = ({  deleteContact, filteredContact }) => {
     return (
         <ul>
-            {items.map(item => {
+            {filteredContact.map(item => {
                 return (
                     <ListItem key={item.id}>{item.name}: {item.phone}
                         <DeleteButton type="button"
