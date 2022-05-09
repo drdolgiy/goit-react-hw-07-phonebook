@@ -9,7 +9,7 @@ export const Form = () => {
         const form = e.currentTarget;
         const name = form.elements.name.value;
         const number = form.elements.number.value;
-        const contacts = { name: name, number: number };
+        const contacts = { name: name, phone: number };
         createContact(contacts);
         form.reset();
     };
